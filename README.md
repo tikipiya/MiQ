@@ -1,4 +1,4 @@
-# makeitaquote
+# MiQ
 
 [![CI](https://img.shields.io/github/actions/workflow/status/tikipiya/MiQ/ci.yml?branch=main&label=ci)](https://github.com/tikipiya/MiQ/actions)
 [![Go Reference](https://pkg.go.dev/badge/github.com/tikipiya/MiQ.svg)](https://pkg.go.dev/github.com/tikipiya/MiQ)
@@ -58,6 +58,84 @@ func main() {
 
 `ImageFile`のほかに`ImageURL`、`ImageBytes`、`ImageValue`を使用できます。remote画像は既定でloopback、private、link-local networkを拒否します。
 
+## コードの書き方
+
+### Engineは再利用する
+
+`Engine`はfont、emoji、remote画像のcacheを共有し、複数goroutineから安全に呼び出せます。画像ごとに作り直さず、applicationの起動時に1つ作成して再利用してください。CLIなどで直接ファイルへ保存するだけなら、描画とencodeをまとめる`WriteQuote`が最短です。
+
+```go
+engine, err := miq.NewEngine(miq.EngineOptions{})
+if err != nil {
+	return err
+}
+
+out, err := os.Create("quote.png")
+if err != nil {
+	return err
+}
+defer out.Close()
+
+return engine.WriteQuote(
+	ctx,
+	out,
+	miq.Quote{Text: "読みやすい引用画像をGoで生成します。"},
+	miq.RenderOptions{},
+	miq.EncodeOptions{Format: miq.PNG},
+)
+```
+
+### 描画結果をbyte列で受け取る
+
+HTTP response、object storage、databaseなどへ渡す場合は、`RenderQuote`の結果を`EncodeBytes`でencodeします。`RenderQuote`は`*image.NRGBA`を返すため、encode前に独自の画像処理を加えることもできます。
+
+```go
+img, err := engine.RenderQuote(ctx, miq.Quote{
+	Text:        "必要な形式に合わせて出力できます。",
+	Username:    "sample_user",
+	DisplayName: "Sample User",
+}, miq.RenderOptions{Theme: theme.Preset(theme.Light)})
+if err != nil {
+	return nil, err
+}
+
+data, err := miq.EncodeBytes(img, miq.EncodeOptions{
+	Format:  miq.WebP,
+	Quality: 90,
+})
+if err != nil {
+	return nil, err
+}
+return data, nil
+```
+
+`Encode`は`io.Writer`、`EncodeBytes`は`[]byte`、`EncodeDataURL`は`data:` URLを返します。JPEG、WebP、AVIFの`Quality`は1〜100で、未指定時は92です。
+
+### contextとエラーを扱う
+
+remote avatar、font、emojiの取得は渡された`context.Context`に従います。HTTP handlerでは`r.Context()`、batch処理ではtimeout付きcontextを渡すと、client切断や期限超過時に処理を中断できます。
+
+```go
+ctx, cancel := context.WithTimeout(parent, 10*time.Second)
+defer cancel()
+
+img, err := engine.RenderQuote(ctx, quote, options)
+if err != nil {
+	switch {
+	case errors.Is(err, miq.ErrValidation):
+		// 入力値を修正する
+	case errors.Is(err, miq.ErrAsset):
+		// avatarやemojiの取得失敗を処理する
+	default:
+		// font、render、contextなどのエラーを処理する
+	}
+	return nil, err
+}
+return img, nil
+```
+
+主な分類は`ErrValidation`、`ErrAsset`、`ErrFont`、`ErrRender`、`ErrAPI`です。詳細なfield名が必要な場合は`errors.As`で`*miq.FieldError`を取得できます。
+
 ## Themes and output
 
 組み込みテーマは`dark`、`light`、`color`、`portrait`、`portrait-light`です。`theme.Input`でlayout、色、gradient、avatar、text、quote mark、divider、labelを個別に上書きできます。
@@ -88,11 +166,16 @@ func main() {
 ## Conversation
 
 ```go
+ctx := context.Background()
 img, err := engine.RenderConversation(ctx, []miq.ConversationMessage{
-	{Username: "cat", DisplayName: "Cat", Text: "first", Avatar: miq.ImageFile("cat.png")},
-	{Username: "cat", DisplayName: "Cat", Text: "second", Avatar: miq.ImageFile("cat.png")},
-	{Username: "dog", Text: "reply"},
+	{Username: "sample_user", DisplayName: "Sample User", Text: "最初のメッセージ", Avatar: miq.ImageFile("avatar.png")},
+	{Username: "sample_user", DisplayName: "Sample User", Text: "同じ人の連続投稿はまとまります", Avatar: miq.ImageFile("avatar.png")},
+	{Username: "another_user", Text: "返信メッセージ"},
 }, miq.ConversationOptions{Theme: miq.ConversationDark, Width: 600})
+if err != nil {
+	return nil, err
+}
+return miq.EncodeBytes(img, miq.EncodeOptions{Format: miq.PNG})
 ```
 
 ## CLI
@@ -145,7 +228,7 @@ CGO_ENABLED=0 go test -tags nodynamic ./...
 CGO_ENABLED=0 go build -tags nodynamic ./...
 ```
 
-詳細は[CONTRIBUTING.md](CONTRIBUTING.md)、互換性テストは[COMPATIBILITY_TESTS.md](COMPATIBILITY_TESTS.md)、移行設計と判断記録は[GO_REWRITE_DESIGN.md](GO_REWRITE_DESIGN.md)を参照してください。
+詳細は[CONTRIBUTING.md](CONTRIBUTING.md)、互換性テストは[COMPATIBILITY_TESTS.md](COMPATIBILITY_TESTS.md)を参照してください。
 
 ## License and attribution
 
