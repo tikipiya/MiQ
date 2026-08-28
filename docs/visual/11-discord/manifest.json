@@ -1,0 +1,94 @@
+{
+  "name": "11-discord",
+  "title": "Discord",
+  "cases": [
+    {
+      "name": "from a discord.js v14 message",
+      "file": "11-discord/from-a-discord-js-v14-message.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 32895,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "from a legacy message (discriminator kept)",
+      "file": "11-discord/from-a-legacy-message-discriminator-kept.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 41790,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "from a minimal message (no avatar)",
+      "file": "11-discord/from-a-minimal-message-no-avatar.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 29324,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "markdown quoted as written (default)",
+      "file": "11-discord/markdown-quoted-as-written-default.png",
+      "note": "stripDiscordMarkdown defaults to false — compare with the next card",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 42848,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "stripDiscordMarkdown: true",
+      "file": "11-discord/stripdiscordmarkdown-true.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 40320,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "mentions resolved (default)",
+      "file": "11-discord/mentions-resolved-default.png",
+      "note": "resolveMentions defaults to true — compare with the next card",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 44952,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "resolveMentions: false",
+      "file": "11-discord/resolvementions-false.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 40025,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "slash commands, timestamps and navigation tabs",
+      "file": "11-discord/slash-commands-timestamps-and-navigation-tabs.png",
+      "note": "these carry everything they need in the token — no lookup involved",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 43568,
+      "ok": true,
+      "error": null
+    }
+  ]
+}

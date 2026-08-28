@@ -1,0 +1,72 @@
+{
+  "name": "02-layout",
+  "title": "Layout",
+  "cases": [
+    {
+      "name": "avatar left (default)",
+      "file": "02-layout/avatar-left-default.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 107840,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "avatar right — text, gradient and watermark all follow",
+      "file": "02-layout/avatar-right-text-gradient-and-watermark-all-follow.png",
+      "note": "text.area and watermark.position are 'auto' by default",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 108035,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "narrow avatar",
+      "file": "02-layout/narrow-avatar.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 98174,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "stacked on a landscape canvas",
+      "file": "02-layout/stacked-on-a-landscape-canvas.png",
+      "note": null,
+      "format": "png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 65499,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "no gradient",
+      "file": "02-layout/no-gradient.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 56178,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "circular avatar",
+      "file": "02-layout/circular-avatar.png",
+      "note": "clipped to the largest circle that fits the box; the fallback tile matches",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 41088,
+      "ok": true,
+      "error": null
+    }
+  ]
+}

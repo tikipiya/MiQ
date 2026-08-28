@@ -1,0 +1,72 @@
+{
+  "name": "04-emoji",
+  "title": "Emoji",
+  "cases": [
+    {
+      "name": "twemoji, including ZWJ and skin tone",
+      "file": "04-emoji/twemoji-including-zwj-and-skin-tone.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 62506,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "discord custom emoji",
+      "file": "04-emoji/discord-custom-emoji.png",
+      "note": "real ids from assets/discordemoji.json",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 50613,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "misskey custom emoji",
+      "file": "04-emoji/misskey-custom-emoji.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 49219,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "all three together",
+      "file": "04-emoji/all-three-together.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 51997,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "misskey off — drawn as plain text",
+      "file": "04-emoji/misskey-off-drawn-as-plain-text.png",
+      "note": "Misskey emoji only resolve when an instance is configured",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 60421,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "unfetchable emoji falls back to its source text",
+      "file": "04-emoji/unfetchable-emoji-falls-back-to-its-source-text.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 69002,
+      "ok": true,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "name": "12-colors",
+  "title": "Colors",
+  "cases": [
+    {
+      "name": "tokyo night",
+      "file": "12-colors/tokyo-night.png",
+      "note": "custom starts fully transparent; every color here is set explicitly",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 57642,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "nord",
+      "file": "12-colors/nord.png",
+      "note": "the same thing written as 0xRRGGBB numbers",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 56445,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "CSS colour names and hsl()",
+      "file": "12-colors/css-colour-names-and-hsl.png",
+      "note": "strings go through the color package, so all of CSS is available",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 53460,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "solarized, as rgba arrays",
+      "file": "12-colors/solarized-as-rgba-arrays.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 57491,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "translucent background over the avatar",
+      "file": "12-colors/translucent-background-over-the-avatar.png",
+      "note": "#RRGGBBAA — the avatar shows through the wash",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 66544,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "transparent background (checkerboard is the page)",
+      "file": "12-colors/transparent-background-checkerboard-is-the-page.png",
+      "note": "nothing is painted where the background would be",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 21915,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "background image",
+      "file": "12-colors/background-image.png",
+      "note": "a photo behind the quote, dimmed by backgroundImage.opacity",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 144568,
+      "ok": true,
+      "error": null
+    }
+  ]
+}

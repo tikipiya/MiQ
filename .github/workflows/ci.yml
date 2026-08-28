@@ -1,0 +1,55 @@
+name: ci
+
+on:
+  push:
+    branches: [main, release/*]
+  pull_request:
+    branches: [main, release/*]
+
+jobs:
+  go-test:
+    name: Go ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.x'
+          cache: true
+      - run: go mod verify
+      - run: go test ./...
+      - run: go vet ./...
+
+  go-quality:
+    name: Go format, race and pure build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.x'
+          cache: true
+      - name: Check formatting
+        run: test -z "$(gofmt -l .)"
+      - run: go test -race ./...
+      - name: Test and build without CGO
+        env:
+          CGO_ENABLED: '0'
+        run: |
+          go test -tags nodynamic ./...
+          go build -tags nodynamic ./...
+
+  go-gallery:
+    name: Go gallery (96-case visual oracle)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.x'
+          cache: true
+      - run: go run ./cmd/miq-gallery --compare --out "${{ runner.temp }}/visual-go" --site "${{ runner.temp }}/index.html"

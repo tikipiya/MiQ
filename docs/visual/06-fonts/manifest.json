@@ -1,0 +1,204 @@
+{
+  "name": "06-fonts",
+  "title": "Fonts",
+  "cases": [
+    {
+      "name": "Noto Sans JP",
+      "file": "06-fonts/noto-sans-jp.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 52792,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "M PLUS Rounded 1c",
+      "file": "06-fonts/m-plus-rounded-1c.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 54057,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Dela Gothic One",
+      "file": "06-fonts/dela-gothic-one.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 57210,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "DotGothic16",
+      "file": "06-fonts/dotgothic16.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 44031,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Hachi Maru Pop",
+      "file": "06-fonts/hachi-maru-pop.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 62357,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Rampart One",
+      "file": "06-fonts/rampart-one.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 63478,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Reggae One",
+      "file": "06-fonts/reggae-one.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 58589,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "RocknRoll One",
+      "file": "06-fonts/rocknroll-one.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 58338,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Zen Old Mincho",
+      "file": "06-fonts/zen-old-mincho.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 53796,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Yuji Syuku",
+      "file": "06-fonts/yuji-syuku.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 54626,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Yusei Magic",
+      "file": "06-fonts/yusei-magic.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 52894,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Inconsolata",
+      "file": "06-fonts/inconsolata.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 43789,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Exo 2",
+      "file": "06-fonts/exo-2.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 42679,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Bruno Ace SC",
+      "file": "06-fonts/bruno-ace-sc.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 42843,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Poltawski Nowy",
+      "file": "06-fonts/poltawski-nowy.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 50595,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Vina Sans",
+      "file": "06-fonts/vina-sans.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 45417,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Dancing Script",
+      "file": "06-fonts/dancing-script.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 48875,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "Castoro Titling",
+      "file": "06-fonts/castoro-titling.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 51865,
+      "ok": true,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "name": "03-text",
+  "title": "Text",
+  "cases": [
+    {
+      "name": "short",
+      "file": "03-text/short.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 46056,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "long — wraps and shrinks",
+      "file": "03-text/long-wraps-and-shrinks.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 107840,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "english wraps at spaces",
+      "file": "03-text/english-wraps-at-spaces.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 70707,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "kinsoku — no stranded punctuation",
+      "file": "03-text/kinsoku-no-stranded-punctuation.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 67175,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "phraseBreak off — breaks per character",
+      "file": "03-text/phrasebreak-off-breaks-per-character.png",
+      "note": "compare with \"long — wraps and shrinks\"",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 106719,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "explicit newlines",
+      "file": "03-text/explicit-newlines.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 46460,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "long url is force-broken",
+      "file": "03-text/long-url-is-force-broken.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 68788,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "overflow: ellipsis (default)",
+      "file": "03-text/overflow-ellipsis-default.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 152000,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "overflow: shrink",
+      "file": "03-text/overflow-shrink.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 188968,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "left aligned",
+      "file": "03-text/left-aligned.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 108077,
+      "ok": true,
+      "error": null
+    }
+  ]
+}

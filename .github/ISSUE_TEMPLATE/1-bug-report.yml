@@ -1,0 +1,59 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe what you expected and what happened instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Provide the smallest Go program or CLI command that reproduces the problem.
+      render: go
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: makeitaquote version
+      placeholder: v1.0.0 or commit SHA
+    validations:
+      required: true
+
+  - type: input
+    id: go-version
+    attributes:
+      label: Go version
+      description: Output of `go version`.
+      placeholder: go1.24.4
+    validations:
+      required: true
+
+  - type: input
+    id: platform
+    attributes:
+      label: OS and architecture
+      description: Output of `go env GOOS GOARCH` and relevant container details.
+      placeholder: linux/amd64, darwin/arm64, windows/amd64
+    validations:
+      required: true
+
+  - type: textarea
+    id: fonts
+    attributes:
+      label: Font and asset setup
+      description: For rendering issues, include custom fonts, offline mode and cache-related environment variables.
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Errors or warnings
+      description: Include complete output where possible.
+      render: shell

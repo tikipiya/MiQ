@@ -1,0 +1,10 @@
+.private/
+dist/
+.makeitaquote/
+docs/visual-go/
+docs/visual-go-offline/
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example

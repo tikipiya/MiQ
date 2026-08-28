@@ -1,0 +1,61 @@
+{
+  "name": "07-quotes",
+  "title": "Quotes",
+  "cases": [
+    {
+      "name": "none (default)",
+      "file": "07-quotes/none-default.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 53002,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "inline",
+      "file": "07-quotes/inline.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 53394,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "inline with 「」",
+      "file": "07-quotes/inline-with.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 53258,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "block",
+      "file": "07-quotes/block.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 54315,
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "divider",
+      "file": "07-quotes/divider.png",
+      "note": null,
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 53031,
+      "ok": true,
+      "error": null
+    }
+  ]
+}

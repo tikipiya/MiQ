@@ -1,0 +1,69 @@
+{
+  "version": "dev",
+  "groups": [
+    {
+      "name": "01-themes",
+      "title": "Themes"
+    },
+    {
+      "name": "02-layout",
+      "title": "Layout"
+    },
+    {
+      "name": "03-text",
+      "title": "Text"
+    },
+    {
+      "name": "04-emoji",
+      "title": "Emoji"
+    },
+    {
+      "name": "05-typography",
+      "title": "Typography"
+    },
+    {
+      "name": "06-fonts",
+      "title": "Fonts"
+    },
+    {
+      "name": "07-quotes",
+      "title": "Quotes"
+    },
+    {
+      "name": "08-avatar",
+      "title": "Avatar"
+    },
+    {
+      "name": "10-formats",
+      "title": "Formats"
+    },
+    {
+      "name": "11-discord",
+      "title": "Discord"
+    },
+    {
+      "name": "14-misskey",
+      "title": "Misskey"
+    },
+    {
+      "name": "16-twitter",
+      "title": "Twitter"
+    },
+    {
+      "name": "15-markdown",
+      "title": "Markdown"
+    },
+    {
+      "name": "12-colors",
+      "title": "Colors"
+    },
+    {
+      "name": "09-sizing",
+      "title": "Sizing"
+    },
+    {
+      "name": "13-conversation",
+      "title": "Conversation"
+    }
+  ]
+}

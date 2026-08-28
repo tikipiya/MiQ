@@ -1,0 +1,116 @@
+name: release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag to release (for example v1.2.3)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.x'
+          cache: true
+
+      - name: Resolve version
+        id: version
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          VERSION="${GITHUB_REF_NAME}"
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then VERSION="${INPUT_VERSION}"; fi
+          if ! printf '%s' "${VERSION}" | grep -Eq '^v[01]\.[0-9]+\.[0-9]+([-.][0-9A-Za-z.-]+)?$'; then
+            echo "invalid semantic version tag: ${VERSION}" >&2
+            exit 1
+          fi
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - run: go mod verify
+      - run: go test ./...
+      - run: go vet ./...
+
+      - name: Create tag for a manual release
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          if ! git rev-parse -q --verify "refs/tags/${VERSION}" >/dev/null; then
+            git tag "${VERSION}"
+            git push origin "${VERSION}"
+          fi
+
+      - name: Build release archives
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          CGO_ENABLED: '0'
+        run: |
+          mkdir -p dist stage
+          for target in linux/amd64 linux/arm64 darwin/amd64 darwin/arm64 windows/amd64 windows/arm64; do
+            GOOS="${target%/*}"
+            GOARCH="${target#*/}"
+            NAME="makeitaquote_${VERSION#v}_${GOOS}_${GOARCH}"
+            rm -rf stage/*
+            BINARY="miq"
+            if [ "${GOOS}" = "windows" ]; then BINARY="miq.exe"; fi
+            GOOS="${GOOS}" GOARCH="${GOARCH}" go build -tags nodynamic -trimpath -ldflags "-s -w -X main.version=${VERSION#v}" -o "stage/${BINARY}" ./cmd/miq
+            cp LICENSE README.md THIRD-PARTY-NOTICES.md stage/
+            if [ "${GOOS}" = "windows" ]; then
+              (cd stage && zip -q "../dist/${NAME}.zip" ./*)
+            else
+              tar -C stage -czf "dist/${NAME}.tar.gz" .
+            fi
+          done
+          (cd dist && sha256sum * > checksums.txt)
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          if gh release view "${VERSION}" >/dev/null 2>&1; then
+            gh release upload "${VERSION}" dist/* --clobber
+          else
+            gh release create "${VERSION}" dist/* --title "${VERSION}" --generate-notes --verify-tag
+          fi
+
+  gallery:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.x'
+          cache: true
+      - name: Regenerate the static gallery
+        env:
+          VERSION: ${{ needs.release.outputs.version }}
+        run: go run ./cmd/miq-gallery --version "${VERSION#v}" --out docs/visual --site docs/index.html
+
+      - name: Commit the regenerated gallery
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A docs
+          if git diff --cached --quiet; then
+            echo "::notice::Gallery unchanged."
+          else
+            git commit -m "docs: regenerate the example gallery"
+            git push origin HEAD:main
+          fi
